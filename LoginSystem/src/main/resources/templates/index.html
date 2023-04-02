@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-	<h2 >Spring Boot Crud System -User Registation</h2>
+	<h2 align="left">Login System</h2>
 	<tr>
 		<div align = "left" >		   
 		     <h3><a  th:href="@{'/new'}">Add new</a></h3>     
@@ -32,7 +32,7 @@
    	</tr>
   </thead>
   <tbody>
-      <tr  th:each="account : ${accountlist }">
+      <tr  th:each="account : ${accountlist}">
 		<td th:text="${account.id}">Account ID</td>
 		<td th:text="${account.username}">Username</td>
 		<td th:text="${account.password}">Password</td>

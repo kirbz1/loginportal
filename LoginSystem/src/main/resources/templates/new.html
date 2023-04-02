@@ -14,13 +14,14 @@
      <div class="col-sm-4">
     <form action="#" th:action="@{/save}" th:object="${account}" method="post">
 
-      
+
+
  		<div alight="left">
             <tr>
-                <label class="form-label" >Account Name</label>
+                <label class="form-label" >Username</label>
                 <td>
 	                <input type="hidden" th:field="*{id}" />
-	                <input type="text" th:field="*{username}" class="form-control" placeholder="Account Name" />
+	                <input type="text" th:field="*{username}" class="form-control" placeholder="Username" />
                 </td>
             </tr>
          </div>   
