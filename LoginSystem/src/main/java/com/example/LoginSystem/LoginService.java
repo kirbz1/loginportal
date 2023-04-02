@@ -11,15 +11,15 @@ public class LoginService {
     @Autowired
     private LoginRepository repo;
 
-    public List<User> listAll() {
+    public List<Account> listAll() {
         return repo.findAll();
     }
 
-    public void save(User user) {
-        repo.save(user);
+    public void save(Account account) {
+        repo.save(account);
     }
 
-    public User get(int id) {
+    public Account get(int id) {
         return repo.findById(id).get();
     }
 

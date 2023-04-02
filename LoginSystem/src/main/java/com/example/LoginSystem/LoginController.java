@@ -21,34 +21,34 @@ public class LoginController {
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        List<User> userlist = service.listAll();
-        model.addAttribute("userlist", userlist);
+        List<Account> accountlist = service.listAll();
+        model.addAttribute("accountlist", accountlist);
         System.out.print("Get / ");
         return "index";
     }
 
     @GetMapping("/new")
     public String add(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("account", new Account());
         return "new";
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute("user") User user) {
-        service.save(user);
+    public String saveAccount(@ModelAttribute("account") Account account) {
+        service.save(account);
         return "redirect:/";
     }
 
     @RequestMapping("/edit/{id}")
-    public ModelAndView showEditUserPage(@PathVariable(name = "id") int id) {
+    public ModelAndView showEditAccountPage(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("new");
-        User user = service.get(id);
-        mav.addObject("user", user);
+        Account account = service.get(id);
+        mav.addObject("account", account);
         return mav;
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteUser(@PathVariable(name = "id") int id) {
+    public String deleteAccount(@PathVariable(name = "id") int id) {
         service.delete(id);
         return "redirect:/";
     }
