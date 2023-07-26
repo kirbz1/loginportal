@@ -10,13 +10,23 @@
 </head>
 <body>
 <div>
-	<h2 align="left">Login System</h2>
+	<h2 align="left" th:if="${logged_in}">Welcome, <span th:text="${current_user.username}"></span>!</h2>
+	<h2 align="left" th:unless="${logged_in}">Welcome, guest!</h2>
 	<tr>
 		<div align = "left" >		   
-		     <h3><a  th:href="@{'/new'}">Add new</a></h3>     
+		     <h3><a  th:href="@{'/login'}">Login</a></h3>     
 	    </div>
 	
 	</tr>
+
+	<tr>
+		<div align = "left" >		   
+		     <h3><a  th:href="@{'/new'}">Create an account</a></h3>     
+	    </div>
+	
+	</tr>
+
+
 	<tr>
 	
 	<div class="col-sm-5" align = "center">
