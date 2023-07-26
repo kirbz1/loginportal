@@ -5,32 +5,35 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
+	<title>Home</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
 	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
 </head>
+<br>
+<br>
 <body>
 <div>
-	<h2 align="left" th:if="${logged_in}">Welcome, <span th:text="${current_user.username}"></span>!</h2>
-	<h2 align="left" th:unless="${logged_in}">Welcome, guest!</h2>
+	<h2 align="center" th:if="${logged_in}">Welcome, <span th:text="${current_user.username}"></span>!</h2>
+	<h2 align="center" th:unless="${logged_in}">Welcome, guest!</h2>
 	<tr>
-		<div align = "left" >		   
+		<div align = "center" >		   
 		     <h3><a  th:href="@{'/login'}">Login</a></h3>     
 	    </div>
 	
 	</tr>
 
 	<tr>
-		<div align = "left" >		   
+		<div align = "center" >		   
 		     <h3><a  th:href="@{'/new'}">Create an account</a></h3>     
 	    </div>
-	
+	<br>
 	</tr>
 
 
 	<tr>
 	
-	<div class="col-sm-5" align = "center">
-                 <div class="panel-body" align = "center" >
+		<div class="row justify-content-center">
+			<div class="col-auto">
                  <table class="table">
   <thead class="thead-dark">
     <tr>
