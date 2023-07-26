@@ -9,10 +9,10 @@
 </head>
 <body>
 <div align="center">
-    <h1>Login - forgot password, remember me</h1>
+    <h1>Create Account - email, firstname, lastname. make sure email/password r valid</h1>
     <br />
      <div class="col-sm-4">
-    <form action="#" th:action="@{/login}" th:object="${current_user}" method="post">
+    <form action="#" th:action="@{/save}" th:object="${account}" method="post">
 
 
 
@@ -36,7 +36,7 @@
             
 			<br>
             <tr>
-            <td colspan="2"><button type="submit" class="btn btn-info">Sign In</button> </td>
+            <td colspan="2"><button type="submit" class="btn btn-info">Register</button> </td>
             </tr>
         </table>
     </form>
