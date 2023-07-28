@@ -23,7 +23,8 @@
 
 <div class="container">
     <h1 align="center">Login</h1>
-    <br>
+    <p align="center" th:if="${login_error}"><FONT COLOR="#ff0000">The details you have entered are incorrect - try again.</FONT></p>
+    <p th:unless="${login_error}"><br></p>
         <form action="#" th:action="@{/login}" th:object="${current_user}" method="post">
 
             <div>

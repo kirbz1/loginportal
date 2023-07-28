@@ -18,6 +18,7 @@ public class LoginController {
 
     private Account current_user;
     private boolean logged_in;
+    private boolean login_error = false;
 
     @Autowired
     private LoginService service;
@@ -30,19 +31,23 @@ public class LoginController {
             model.addAttribute("logged_in", true);
             model.addAttribute("current_user", current_user);
         }
-
+        this.login_error = false;
         return "index";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute("current_user", new Account());
+        if (this.login_error) {
+            model.addAttribute("login_error", true);
+        }
         return "login";
     }
     
     @GetMapping("/new")
     public String add(Model model) {
         model.addAttribute("account", new Account());
+        this.login_error = false;
         return "new";
     }
 
@@ -61,6 +66,7 @@ public class LoginController {
         //handle unsuccessful case
         if (service.attemptLogin(x, account.getPassword()) == false) {
             //add attribute that displays error message
+            this.login_error = true;
             return "redirect:/login";
         }
 
