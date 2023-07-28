@@ -54,14 +54,26 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String attemptLogin(@ModelAttribute("current_user") Account account, final RedirectAttributes redirectAttributes) {
-        //find and verify account exists in repo
-        //handle negative case - doesn't exist
-        //positive case - create new signed in user element and go to home page?
-        redirectAttributes.addFlashAttribute("logged_in", true);
-		redirectAttributes.addFlashAttribute("current_user", account);
-        this.logged_in = true;
-        this.current_user = account;
-        return "redirect:/";
+        
+        //remove this once service.attemptLogin works for username instead of id
+        int x = Integer.parseInt(account.getUsername());
+
+        //handle unsuccessful case
+        if (service.attemptLogin(x, account.getPassword()) == false) {
+            //add attribute that displays error message
+            return "redirect:/login";
+        }
+
+        //handle successful case
+        else if (service.attemptLogin(x, account.getPassword()) == true) {
+            redirectAttributes.addFlashAttribute("logged_in", true);
+            redirectAttributes.addFlashAttribute("current_user", account);
+            this.logged_in = true;
+            this.current_user = account;
+            return "redirect:/";
+        }
+
+        return "new";
     }
 
     @RequestMapping("/edit/{id}")

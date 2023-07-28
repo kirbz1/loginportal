@@ -27,4 +27,16 @@ public class LoginService {
         repo.deleteById(id);
     }
 
+    public boolean attemptLogin(int id, String password) {
+        //find account by username instead of id
+        //handle null case
+        Account account = get(id);
+
+        if (account.getPassword().equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
